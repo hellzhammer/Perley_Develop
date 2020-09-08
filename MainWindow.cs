@@ -11,7 +11,6 @@ namespace Perley_Develop_IDE
 {
     class MainWindow : Window
     {
-        
         private int height = 600;
         private int width = 800;
         [UI] private Box box = null;

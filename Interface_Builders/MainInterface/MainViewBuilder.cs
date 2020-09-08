@@ -71,11 +71,8 @@ public class MainViewBuilder{
         private TreeView BuildFileTree(){
             Gtk.TreeView tree = new Gtk.TreeView ();
             Gtk.TreeViewColumn artistColumn = new Gtk.TreeViewColumn ();
-            artistColumn.Title = "Artist";
-            Gtk.TreeViewColumn songColumn = new Gtk.TreeViewColumn ();
-            songColumn.Title = "Song Title";
+            artistColumn.Title = "File Tree";
             tree.AppendColumn (artistColumn);
-            tree.AppendColumn (songColumn);
             Gtk.ListStore musicListStore = new Gtk.ListStore (typeof (string), typeof (string));
             tree.Model = musicListStore;
             return tree;

@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 public class DotnetCommander{
-    public static string new_project = "dotnet new";
-    public static string build_project = "dotnet build";
-    public static string restore_project = "dotnet restore";
+    string new_project = "dotnet new";
+    string build_project = "dotnet build";
+    string restore_project = "dotnet restore";
+    string run_project = "dotnet run";
     public static List<string> app_types = new List<string>(){
         "gtkapp",
         "console",
@@ -12,7 +13,23 @@ public class DotnetCommander{
         "webapi"
     };
 
-    public static void ExecuteBashCommand(string command)
+    public void CreateApp(string apptype){
+        ExecuteBashCommand(new_project + " " + apptype);        
+    }
+
+    public void RestoreApp(){
+        ExecuteBashCommand(restore_project);
+    }
+
+    public void BuildApp(){
+        ExecuteBashCommand(build_project);
+    }
+
+    public void RunApp(){
+        ExecuteBashCommand(run_project);
+    }
+
+    private void ExecuteBashCommand(string command)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo() { 
                 FileName = "/bin/bash", 

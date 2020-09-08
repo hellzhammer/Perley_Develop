@@ -1,5 +1,6 @@
 using System;
 using Gtk;
+using System.IO;
 
 namespace Perley_Develop_IDE
 {
@@ -8,6 +9,8 @@ namespace Perley_Develop_IDE
         [STAThread]
         public static void Main(string[] args)
         {
+            FileSystemBuilder();
+
             Application.Init();
 
             var app = new Application("org.Perley_Develop_IDE.Perley_Develop_IDE", GLib.ApplicationFlags.None);
@@ -18,6 +21,12 @@ namespace Perley_Develop_IDE
 
             win.Show();
             Application.Run();
+        }
+
+        private static void FileSystemBuilder(){
+            if(!Directory.Exists(Environment.CurrentDirectory+"/Projects")){
+                Directory.CreateDirectory(Environment.CurrentDirectory+"/Projects");
+            }
         }
     }
 }
