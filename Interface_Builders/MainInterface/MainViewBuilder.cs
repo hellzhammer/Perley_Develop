@@ -1,3 +1,4 @@
+using System;
 using Gtk;
 public class MainViewBuilder{
     public MenuBar BuildMenu(){
@@ -5,18 +6,31 @@ public class MainViewBuilder{
             Menu filemenu = new Menu();
             MenuItem file = new MenuItem("File");
             file.Submenu = filemenu;
+            /*
             MenuItem _new = new MenuItem("New File");
             filemenu.Append(_new);
             MenuItem open = new MenuItem("Open File");
             filemenu.Append(open);
+            */
             MenuItem openFolder = new MenuItem("Open Folder");
+            openFolder.Activated += (sender, args)=>{
+              string[] files = DirectoryManager.GetDirectorySubdirectories(App_Path.projectPath);
+              foreach (var file in files)
+              {
+                  Console.WriteLine(file);
+              }
+            };
             filemenu.Append(openFolder);
+
             MenuItem close = new MenuItem("Close File");
             filemenu.Append(close);
+
             MenuItem closeFolder = new MenuItem("Close Folder");
             filemenu.Append(closeFolder);
+
             MenuItem exit = new MenuItem("Exit App");
             filemenu.Append(exit);
+            
             mb.Append(file);
 
             Menu editmenu = new Menu();

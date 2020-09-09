@@ -65,7 +65,6 @@ namespace Perley_Develop_IDE
             this.HeightRequest = height;
             this.WidthRequest = width;
         }
-
         
         private void Window_DeleteEvent(object sender, DeleteEventArgs a)
         {
