@@ -78,6 +78,10 @@ namespace Perley_Develop_IDE.GUI {
             });
         }
         private void CancelClicked(object sender, EventArgs e){
+            if(Session.CurrentSession != null)
+            {
+                Session.CurrentSession.EndSession(false);
+            }
             var win = new WelcomeWindow();
             Application.AddWindow(win);
             win.Show();
@@ -107,6 +111,11 @@ namespace Perley_Develop_IDE.GUI {
             Session sesh = new Session(pathToUse);
             DotnetCommander dComm = new DotnetCommander();
             dComm.CreateApp(appTypes[selectedAppType]);
+
+            var win = new MainWindow();
+            Application.AddWindow(win);
+            win.Show();
+            this.Dispose();
         }
         private void BrowseClicked(object sender, EventArgs e){
             MainViewBuilder b = new MainViewBuilder();
@@ -123,10 +132,6 @@ namespace Perley_Develop_IDE.GUI {
 
         public void Window_DeleteEvent(object sender, DeleteEventArgs a) {
             //todo: do something useful on exit
-            if(Session.CurrentSession != null)
-            {
-                Session.CurrentSession.EndSession(false);
-            }
         }
     }
 }

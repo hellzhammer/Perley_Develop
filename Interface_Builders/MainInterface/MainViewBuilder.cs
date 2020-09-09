@@ -121,6 +121,8 @@ public class MainViewBuilder
         tree.AppendColumn(artistColumn);
         Gtk.ListStore musicListStore = new Gtk.ListStore(typeof(string));
         tree.Model = musicListStore;
+        musicListStore.AppendValues ("Garbage", "Dog New Tricks");
+
         return tree;
     }
 }

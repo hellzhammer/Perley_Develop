@@ -11,7 +11,6 @@ namespace Perley_Develop_IDE.GUI
 {
     public class WelcomeWindow : Window, Perley_Develop_IDE.GUI.IWindow
     {
-        bool running = false;
         [UI] private Box box = null;
         public WelcomeWindow() : this(new Builder("WelcomeWindow.glade")) { }
 
@@ -43,6 +42,14 @@ namespace Perley_Develop_IDE.GUI
                 openButton.Clicked += (sender, args) =>
                 {
                     string dir = build.OpenDirectory(this);
+                    Session s = new Session(dir);
+                    if(dir != null){
+                       var win = new MainWindow();
+                        Application.AddWindow(win);
+                        win.Show();
+                        this.Dispose(); 
+                    }
+                    /*
                     if (dir != null)
                     {
                         string[] dirs = DirectoryManager.GetDirectorySubdirectories(dir);
@@ -51,6 +58,7 @@ namespace Perley_Develop_IDE.GUI
                             Console.WriteLine(folder);
                         }
                     }
+                    */
                 };
 
                 this.box.Add(newButton);
@@ -61,10 +69,12 @@ namespace Perley_Develop_IDE.GUI
         public void Window_DeleteEvent(object sender, DeleteEventArgs a)
         {
             //todo: do something useful on exit
+            /*
             if (Session.CurrentSession != null)
             {
                 Session.CurrentSession.EndSession(false);
             }
+            */
         }
     }
 }

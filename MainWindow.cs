@@ -4,9 +4,11 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System;
 using System.Web;
+
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
 
+using Perley_Develop_Core_lib.App_Components;
 namespace Perley_Develop_IDE.GUI
 {
     class MainWindow : Window, Perley_Develop_IDE.GUI.IWindow
@@ -25,6 +27,7 @@ namespace Perley_Develop_IDE.GUI
             
             DeleteEvent += Window_DeleteEvent;
             BuildApp();
+            this.Title = this.Title + " -- Directory: " + Session.CurrentSession.projectPath;
         }
         public void BuildApp(){
             Gtk.Application.Invoke (delegate {
