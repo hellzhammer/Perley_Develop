@@ -93,20 +93,23 @@ public class MainViewBuilder
     public string OpenDirectory(Window win)
     {
         string rtnval = string.Empty;
-        Gtk.FileChooserDialog filechooser =
-        new Gtk.FileChooserDialog("Choose the file to open",
+        Gtk.FileChooserDialog dirchooser =
+        new Gtk.FileChooserDialog("Choose Directory To Open",
           win,
           FileChooserAction.SelectFolder,
           "Cancel", ResponseType.Cancel,
           "Open", ResponseType.Accept);
 
-        if (filechooser.Run() == (int)ResponseType.Accept)
+        if (dirchooser.Run() == (int)ResponseType.Accept)
         {
-            Console.WriteLine(filechooser.CurrentFolder);
-            rtnval = filechooser.CurrentFolder;
+            Console.WriteLine(dirchooser.CurrentFolder);
+            rtnval = dirchooser.CurrentFolder;
+        }
+        else {
+            rtnval = null;
         }
 
-        filechooser.Dispose();
+        dirchooser.Dispose();
         return rtnval;
     }
     private TreeView BuildFileTree()

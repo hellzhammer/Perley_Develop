@@ -91,6 +91,16 @@
         "runtime": {
           "lib/netstandard2.0/PangoSharp.dll": {}
         }
+      },
+      "Perley_Develop_Core_lib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Perley_Develop_Core_lib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Perley_Develop_Core_lib.dll": {}
+        }
       }
     }
   },
@@ -179,11 +189,17 @@
         "pangosharp.3.22.25.128.nupkg.sha512",
         "pangosharp.nuspec"
       ]
+    },
+    "Perley_Develop_Core_lib/1.0.0": {
+      "type": "project",
+      "path": "../Perley_Develop_Core_lib/Perley_Develop_Core_lib.csproj",
+      "msbuildProject": "../Perley_Develop_Core_lib/Perley_Develop_Core_lib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "GtkSharp >= 3.22.25.*"
+      "GtkSharp >= 3.22.25.*",
+      "Perley_Develop_Core_lib >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -213,7 +229,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_Core_lib/Perley_Develop_Core_lib.csproj": {
+              "projectPath": "/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_Core_lib/Perley_Develop_Core_lib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

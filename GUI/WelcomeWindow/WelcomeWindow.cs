@@ -31,15 +31,20 @@ namespace Perley_Develop_IDE.GUI
                 MainViewBuilder build = new MainViewBuilder();
                 newButton.Clicked += (sender, args) => {
                     //todo
+                    var win = new NewProjectWindow();
+                    Application.AddWindow(win);
+                    win.Show();
                 };
                 Button openButton = new Button("Open Project");
                 openButton.Clicked += (sender, args) =>
                 {
                     string dir = build.OpenDirectory(this);
-                    string[] dirs = DirectoryManager.GetDirectorySubdirectories(dir);
-                    foreach (var folder in dirs)
-                    {
-                        Console.WriteLine(folder);
+                    if(dir != null){
+                        string[] dirs = DirectoryManager.GetDirectorySubdirectories(dir);
+                        foreach (var folder in dirs)
+                        {
+                            Console.WriteLine(folder);
+                        }
                     }
                 };
 

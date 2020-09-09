@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v3.1": {
       "Perley_Develop_IDE/1.0.0": {
         "dependencies": {
-          "GtkSharp": "3.22.25.128"
+          "GtkSharp": "3.22.25.128",
+          "Perley_Develop_Core_lib": "1.0.0"
         },
         "runtime": {
           "Perley_Develop_IDE.dll": {}
@@ -93,6 +94,11 @@
             "fileVersion": "3.22.25.128"
           }
         }
+      },
+      "Perley_Develop_Core_lib/1.0.0": {
+        "runtime": {
+          "Perley_Develop_Core_lib.dll": {}
+        }
       }
     }
   },
@@ -150,6 +156,11 @@
       "sha512": "sha512-j3dm93MzUFJhCp0ecaxzDc+JZ8OAIwGeERp8GKVCNLxbdxDi68VYFI5iSZPNca091cO5Zo5IT5eeaWoyIwXR9g==",
       "path": "pangosharp/3.22.25.128",
       "hashPath": "pangosharp.3.22.25.128.nupkg.sha512"
+    },
+    "Perley_Develop_Core_lib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
