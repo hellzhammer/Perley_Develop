@@ -19,6 +19,8 @@ public class MainViewBuilder
         MenuItem closeFolder = new MenuItem("Close Folder");
         filemenu.Append(closeFolder);
         */
+        /*
+        todo there is some work that needs to be done before i can actually implement this.
         MenuItem openFolder = new MenuItem("Open Folder");
         openFolder.Activated += (sender, args) =>
         {
@@ -31,6 +33,7 @@ public class MainViewBuilder
         };
 
         filemenu.Append(openFolder);
+        */
 
         MenuItem exit = new MenuItem("Exit App");
         exit.Activated += (sender, args) =>
@@ -68,6 +71,7 @@ public class MainViewBuilder
     }
     public HBox BuildTextEditor()
     {
+        //todo: text edidtor is about to be replaced.
         Notebook n = new Notebook();
 
         var te = new TextView();
@@ -121,7 +125,7 @@ public class MainViewBuilder
         tree.AppendColumn(artistColumn);
         Gtk.ListStore musicListStore = new Gtk.ListStore(typeof(string));
         tree.Model = musicListStore;
-        musicListStore.AppendValues ("Garbage", "Dog New Tricks");
+        musicListStore.AppendValues ("Garbage");
 
         return tree;
     }
