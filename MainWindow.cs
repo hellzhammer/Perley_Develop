@@ -7,9 +7,9 @@ using System.Web;
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
 
-namespace Perley_Develop_IDE
+namespace Perley_Develop_IDE.GUI
 {
-    class MainWindow : Window
+    class MainWindow : Window, Perley_Develop_IDE.GUI.IWindow
     {
         private int height = 600;
         private int width = 800;
@@ -22,31 +22,17 @@ namespace Perley_Develop_IDE
         private MainWindow(Builder builder) : base(builder.GetObject("MainWindow").Handle)
         {
             builder.Autoconnect(this);
-
+            
             DeleteEvent += Window_DeleteEvent;
             BuildApp();
         }
-
-        private TreeView BuildFileTree(){
-            Gtk.TreeView tree = new Gtk.TreeView ();
-            Gtk.TreeViewColumn artistColumn = new Gtk.TreeViewColumn ();
-            artistColumn.Title = "Artist";
-            Gtk.TreeViewColumn songColumn = new Gtk.TreeViewColumn ();
-            songColumn.Title = "Song Title";
-            tree.AppendColumn (artistColumn);
-            tree.AppendColumn (songColumn);
-            Gtk.ListStore musicListStore = new Gtk.ListStore (typeof (string), typeof (string));
-            tree.Model = musicListStore;
-            return tree;
-        }
-
-        private void BuildApp(){
+        public void BuildApp(){
             Gtk.Application.Invoke (delegate {
               MainViewBuilder viewBuild = new MainViewBuilder();
               setWindow();  
               box.Spacing = 5;
 
-              MenuBar mb = viewBuild.BuildMenu();
+              MenuBar mb = viewBuild.BuildMenu(this);
               box.Add(mb);
               
               HBox _hbox = viewBuild.BuildTextEditor();
@@ -66,9 +52,9 @@ namespace Perley_Develop_IDE
             this.WidthRequest = width;
         }
         
-        private void Window_DeleteEvent(object sender, DeleteEventArgs a)
+        public void Window_DeleteEvent(object sender, DeleteEventArgs a)
         {
             Application.Quit();
-        }
+        }        
     }
 }

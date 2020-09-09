@@ -1,7 +1,7 @@
 using System;
 using Gtk;
 using System.IO;
-
+using Perley_Develop_IDE.GUI;
 namespace Perley_Develop_IDE
 {
     class Program
@@ -16,7 +16,7 @@ namespace Perley_Develop_IDE
             var app = new Application("org.Perley_Develop_IDE.Perley_Develop_IDE", GLib.ApplicationFlags.None);
             app.Register(GLib.Cancellable.Current);
 
-            var win = new MainWindow();
+            var win = new WelcomeWindow();
             app.AddWindow(win);
 
             win.Show();
