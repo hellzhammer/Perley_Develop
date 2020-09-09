@@ -1,7 +1,3 @@
-/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.csprojAssemblyReference.cache
-/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.AssemblyInfoInputs.cache
-/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.AssemblyInfo.cs
-/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.csproj.CoreCompileInputs.cache
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/Perley_Develop_IDE
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/Perley_Develop_IDE.deps.json
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/Perley_Develop_IDE.runtimeconfig.json
@@ -18,6 +14,10 @@
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/PangoSharp.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/Perley_Develop_Core_lib.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/Perley_Develop_Core_lib.pdb
+/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.csprojAssemblyReference.cache
+/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.AssemblyInfoInputs.cache
+/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.AssemblyInfo.cs
+/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.csproj.CoreCompileInputs.cache
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.csproj.CopyComplete
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.pdb

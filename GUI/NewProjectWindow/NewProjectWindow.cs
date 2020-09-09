@@ -16,7 +16,7 @@ namespace Perley_Develop_IDE.GUI {
         [UI] private Box box = null;
         Entry pathEntry { get; set; }
         Entry projEntry { get; set; }
-        string[] appTypes = new string[]{"gtkapp", "console", "webapi", "webapp"};
+        string[] appTypes = new string[]{"gtkapp", "console", "classlib", "webapi", "webapp"};
         int selectedAppType = 0;
         public NewProjectWindow() : this(new Builder("NewProjectWindow.glade")) { }
 
@@ -84,6 +84,24 @@ namespace Perley_Develop_IDE.GUI {
             this.Dispose();
         }
         private void ContinueClicked(object sender, EventArgs e){
+            if(string.IsNullOrEmpty(pathEntry.Text)){
+                //todo: show missing text dialogue...
+                MessageDialog md = new MessageDialog (this, 
+                DialogFlags.DestroyWithParent, MessageType.Error, 
+                ButtonsType.Close, "Missing Directory Path!");
+                md.Run();
+                md.Dispose();
+                return;
+            }
+            if(string.IsNullOrEmpty(projEntry.Text)){
+                //todo: show missing text dialogue...
+                MessageDialog md = new MessageDialog (this, 
+                DialogFlags.DestroyWithParent, MessageType.Error, 
+                ButtonsType.Close, "Missing Project Name!");
+                md.Run();
+                md.Dispose();
+                return;
+            }
             string pathToUse = pathEntry.Text + projEntry.Text;
             Directory.CreateDirectory(pathToUse);
             Session sesh = new Session(pathToUse);

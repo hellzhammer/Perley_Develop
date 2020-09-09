@@ -24,13 +24,15 @@ namespace Perley_Develop_IDE
 
         private static void FileSystemBuilder(){
             string mainPath = Environment.CurrentDirectory;
-            if(!Directory.Exists(mainPath+"/Projects")){
-                Directory.CreateDirectory(mainPath+"/Projects");
+            var s = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            Console.WriteLine(s);
+            if(!Directory.Exists(s)){
+                Directory.CreateDirectory(s+"/PerleyDevProjects");
             }
             else{
                 //todo: get paths to projects.
             }
-            App_Path.projectPath = mainPath+"/Projects";
+            App_Path.projectPath = s+"/PerleyDevProjects";
         }
     }
 }
