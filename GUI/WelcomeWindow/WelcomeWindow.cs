@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System;
-using System.Web;
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
 
@@ -49,9 +48,6 @@ namespace Perley_Develop_IDE.GUI
                 this.ShowAll();
             });
         }
-        public void Window_DeleteEvent(object sender, DeleteEventArgs a)
-        {
-            Application.Quit();
-        }
+        public void Window_DeleteEvent(object sender, DeleteEventArgs a) => Application.Quit();
     }
 }

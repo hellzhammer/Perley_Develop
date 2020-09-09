@@ -52,9 +52,6 @@ namespace Perley_Develop_IDE.GUI
             this.WidthRequest = width;
         }
         
-        public void Window_DeleteEvent(object sender, DeleteEventArgs a)
-        {
-            Application.Quit();
-        }        
+        public void Window_DeleteEvent(object sender, DeleteEventArgs a) => Application.Quit();     
     }
 }
