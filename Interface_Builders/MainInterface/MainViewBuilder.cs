@@ -110,7 +110,8 @@ public class MainViewBuilder
             Console.WriteLine(dirchooser.CurrentFolder);
             rtnval = dirchooser.CurrentFolder;
         }
-        else {
+        else
+        {
             rtnval = null;
         }
 
@@ -125,7 +126,7 @@ public class MainViewBuilder
         tree.AppendColumn(artistColumn);
         Gtk.ListStore musicListStore = new Gtk.ListStore(typeof(string));
         tree.Model = musicListStore;
-        musicListStore.AppendValues ("Garbage");
+        musicListStore.AppendValues("Garbage");
 
         return tree;
     }
