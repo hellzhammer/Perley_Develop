@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1LjS6J9+ervRd9inx7S7C3kUp3xM/cWX3jbl94Ga+JVWdHCBpv0OW18cTvvngUuyVK36NWuZ0/zGvMNFB1UedQ==",
+  "dgSpecHash": "NnJESnuoaA2/oZG+tmnhieBfg1Gd50p/G5vOSjo8YjxXr//vnnHvDs5z4Dt6KBBuI/echBj70OC2/sznatOGKQ==",
   "success": true,
   "projectFilePath": "/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/Perley_Develop_IDE.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "/home/hellzhammer/.nuget/packages/giosharp/3.22.25.128/giosharp.3.22.25.128.nupkg.sha512",
     "/home/hellzhammer/.nuget/packages/glibsharp/3.22.25.128/glibsharp.3.22.25.128.nupkg.sha512",
     "/home/hellzhammer/.nuget/packages/gtksharp/3.22.25.128/gtksharp.3.22.25.128.nupkg.sha512",
+    "/home/hellzhammer/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
     "/home/hellzhammer/.nuget/packages/pangosharp/3.22.25.128/pangosharp.3.22.25.128.nupkg.sha512"
   ],
   "logs": []

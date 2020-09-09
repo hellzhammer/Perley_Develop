@@ -5,11 +5,13 @@ using System.ComponentModel;
 using System;
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
-
+using Perley_Develop_Core_lib.FileSystem;
+using Perley_Develop_Core_lib.App_Components;
 namespace Perley_Develop_IDE.GUI
 {
     public class WelcomeWindow : Window, Perley_Develop_IDE.GUI.IWindow
     {
+        bool running = false;
         [UI] private Box box = null;
         public WelcomeWindow() : this(new Builder("WelcomeWindow.glade")) { }
 
@@ -29,17 +31,20 @@ namespace Perley_Develop_IDE.GUI
                 this.box.PackStart(l, true, false, 10);
                 Button newButton = new Button("New Project");
                 MainViewBuilder build = new MainViewBuilder();
-                newButton.Clicked += (sender, args) => {
+                newButton.Clicked += (sender, args) =>
+                {
                     //todo
                     var win = new NewProjectWindow();
                     Application.AddWindow(win);
                     win.Show();
+                    this.Dispose();
                 };
                 Button openButton = new Button("Open Project");
                 openButton.Clicked += (sender, args) =>
                 {
                     string dir = build.OpenDirectory(this);
-                    if(dir != null){
+                    if (dir != null)
+                    {
                         string[] dirs = DirectoryManager.GetDirectorySubdirectories(dir);
                         foreach (var folder in dirs)
                         {
@@ -53,6 +58,13 @@ namespace Perley_Develop_IDE.GUI
                 this.ShowAll();
             });
         }
-        public void Window_DeleteEvent(object sender, DeleteEventArgs a) => Application.Quit();
+        public void Window_DeleteEvent(object sender, DeleteEventArgs a)
+        {
+            //todo: do something useful on exit
+            if (Session.CurrentSession != null)
+            {
+                Session.CurrentSession.EndSession(false);
+            }
+        }
     }
 }

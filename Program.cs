@@ -10,7 +10,6 @@ namespace Perley_Develop_IDE
         public static void Main(string[] args)
         {
             FileSystemBuilder();
-
             Application.Init();
 
             var app = new Application("org.Perley_Develop_IDE.Perley_Develop_IDE", GLib.ApplicationFlags.None);
