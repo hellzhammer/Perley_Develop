@@ -31,6 +31,7 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
                 string[] pluginPaths = new string[]
                 {
                     // Paths to plugins to load.
+                    Environment.CurrentDirectory + "/Plugins/PerleyDev_T/PerleyDev_T.dll"
                 };
 
                 IEnumerable<IExtension> commands = pluginPaths.SelectMany(pluginPath =>
@@ -46,6 +47,13 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
                     foreach (IExtension command in commands)
                     {
                         Console.WriteLine($"{command.Name}\t - {command.Description}");
+                        if (command == null)
+                        {
+                            Console.WriteLine("No such command is known.");
+                            return;
+                        }
+
+                        int i = command.Execute();
                     }
                 }
                 else
@@ -62,7 +70,7 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
                             return;
                         }
 
-                        command.Execute();
+                        int i = command.Execute();
 
                         Console.WriteLine();
                     }
@@ -74,7 +82,7 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
             }
         }
 
-        static Assembly LoadPlugin(string relativePath)
+        private Assembly LoadPlugin(string relativePath)
         {
             // Navigate up to the solution root
             string root = Path.GetFullPath(Path.Combine(

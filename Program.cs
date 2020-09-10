@@ -2,6 +2,7 @@ using System;
 using Gtk;
 using System.IO;
 using Perley_Develop_IDE.GUI;
+using Perley_Develop_IDE.Perley_Dev_System.Plugin;
 namespace Perley_Develop_IDE
 {
     class Program
@@ -9,6 +10,10 @@ namespace Perley_Develop_IDE
         [STAThread]
         public static void Main(string[] args)
         {
+            //testing out loading plugins
+            PerleyDevPluginLoader loader = new PerleyDevPluginLoader();
+            loader.LoadPlugins(args);
+
             FileSystemBuilder();
             Application.Init();
 
