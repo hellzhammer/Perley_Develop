@@ -9,6 +9,7 @@
       "Perley_Develop_IDE/1.0.0": {
         "dependencies": {
           "GtkSharp": "3.22.25.128",
+          "PerleyDev_Plugin_lib": "1.0.0",
           "Perley_Develop_Core_lib": "1.0.0"
         },
         "runtime": {
@@ -103,6 +104,14 @@
           }
         }
       },
+      "PerleyDev_Plugin_lib/1.0.0": {
+        "dependencies": {
+          "GtkSharp": "3.22.25.128"
+        },
+        "runtime": {
+          "PerleyDev_Plugin_lib.dll": {}
+        }
+      },
       "Perley_Develop_Core_lib/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.3"
@@ -174,6 +183,11 @@
       "sha512": "sha512-j3dm93MzUFJhCp0ecaxzDc+JZ8OAIwGeERp8GKVCNLxbdxDi68VYFI5iSZPNca091cO5Zo5IT5eeaWoyIwXR9g==",
       "path": "pangosharp/3.22.25.128",
       "hashPath": "pangosharp.3.22.25.128.nupkg.sha512"
+    },
+    "PerleyDev_Plugin_lib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Perley_Develop_Core_lib/1.0.0": {
       "type": "project",

@@ -17,6 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../Perley_Develop_Core_lib/Perley_Develop_Core_lib.csproj" />
+    <ProjectReference Include="../PerleyDev_Plugin_lib/PerleyDev_Plugin_lib.csproj" />
   </ItemGroup>
 
 </Project>

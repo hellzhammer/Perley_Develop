@@ -101,6 +101,19 @@
           "lib/netstandard2.0/PangoSharp.dll": {}
         }
       },
+      "PerleyDev_Plugin_lib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "GtkSharp": "3.22.25.128"
+        },
+        "compile": {
+          "bin/placeholder/PerleyDev_Plugin_lib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PerleyDev_Plugin_lib.dll": {}
+        }
+      },
       "Perley_Develop_Core_lib/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -233,6 +246,11 @@
         "pangosharp.nuspec"
       ]
     },
+    "PerleyDev_Plugin_lib/1.0.0": {
+      "type": "project",
+      "path": "../PerleyDev_Plugin_lib/PerleyDev_Plugin_lib.csproj",
+      "msbuildProject": "../PerleyDev_Plugin_lib/PerleyDev_Plugin_lib.csproj"
+    },
     "Perley_Develop_Core_lib/1.0.0": {
       "type": "project",
       "path": "../Perley_Develop_Core_lib/Perley_Develop_Core_lib.csproj",
@@ -242,6 +260,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "GtkSharp >= 3.22.25.*",
+      "PerleyDev_Plugin_lib >= 1.0.0",
       "Perley_Develop_Core_lib >= 1.0.0"
     ]
   },
@@ -273,6 +292,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/PerleyDev_Plugin_lib/PerleyDev_Plugin_lib.csproj": {
+              "projectPath": "/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/PerleyDev_Plugin_lib/PerleyDev_Plugin_lib.csproj"
+            },
             "/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_Core_lib/Perley_Develop_Core_lib.csproj": {
               "projectPath": "/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_Core_lib/Perley_Develop_Core_lib.csproj"
             }
@@ -308,7 +330,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.401/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
       }
     }
   }

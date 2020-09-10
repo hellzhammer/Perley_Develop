@@ -1,3 +1,4 @@
+using System.Linq;
 using System;
 using Gtk;
 using System.IO;
@@ -10,11 +11,12 @@ namespace Perley_Develop_IDE
         [STAThread]
         public static void Main(string[] args)
         {
+            /*
             //testing out loading plugins
             PerleyDevPluginLoader loader = new PerleyDevPluginLoader();
             loader.LoadPlugins(args);
-
-            FileSystemBuilder();
+            */
+            IDE_Startup();
             Application.Init();
 
             var app = new Application("org.Perley_Develop_IDE.Perley_Develop_IDE", GLib.ApplicationFlags.None);
@@ -27,7 +29,8 @@ namespace Perley_Develop_IDE
             Application.Run();
         }
 
-        private static void FileSystemBuilder(){
+        private static void IDE_Startup(){
+            //build the projects folder if not done already
             string mainPath = Environment.CurrentDirectory;
             var s = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             Console.WriteLine(s);
@@ -38,6 +41,14 @@ namespace Perley_Develop_IDE
                 //todo: get paths to projects.
             }
             App_Path.projectPath = s+"/PerleyDevProjects";
+
+            //Load editor plugin paths
+            Console.WriteLine("Getting Editor Components..");
+            //get the contents of the plugins Core folder
+            App_Path.CorePlugins = Directory.GetDirectories(App_Path.GetCorePath()).ToList();
+            //get the contents of the plugins CoreGui folder
+            App_Path.CoreGuiPlugins = Directory.GetDirectories(App_Path.GetGuiPath()).ToList();
+            Console.WriteLine("Finished Getting Editor Components..");
         }
     }
 }

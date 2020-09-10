@@ -7,8 +7,11 @@ using System.Web;
 using System.Linq;
 using System.IO;
 using System.Reflection;
-using Perley_Develop_Core_lib.App_Components.Models.Interfaces;
+
+using Perley_Develop_Core_lib.App_Components.Models;
 using Perley_Develop_IDE.Perley_Dev_System.Plugin;
+using PerleyDev_Plugin_lib.Interfaces;
+using PerleyDev_Plugin_lib.Models;
 
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
@@ -23,7 +26,7 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
             {
                 if (args.Length == 1 && args[0] == "/d")
                 {
-                    Console.WriteLine("Waiting for any key...");
+                    Console.WriteLine("Press any key to exit...");
                     Console.ReadLine();
                 }
 
@@ -34,7 +37,7 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
                     Environment.CurrentDirectory + "/Plugins/PerleyDev_T/PerleyDev_T.dll"
                 };
 
-                IEnumerable<IExtension> commands = pluginPaths.SelectMany(pluginPath =>
+                IEnumerable<ExtensionBase_GUI> extensions = pluginPaths.SelectMany(pluginPath =>
                 {
                     Assembly pluginAssembly = LoadPlugin(pluginPath);
                     return CreateCommands(pluginAssembly);
@@ -42,35 +45,35 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
 
                 if (args.Length == 0)
                 {
-                    Console.WriteLine("Commands: ");
+                    Console.WriteLine("Extensions: ");
                     // Output the loaded commands.
-                    foreach (IExtension command in commands)
+                    foreach (ExtensionBase_GUI extension in extensions)
                     {
-                        Console.WriteLine($"{command.Name}\t - {command.Description}");
-                        if (command == null)
+                        if (extension == null)
                         {
-                            Console.WriteLine("No such command is known.");
+                            Console.WriteLine("Sorry Can't Load This File");
                             return;
                         }
 
-                        int i = command.Execute();
+                        bool i = extension.Init();
+                        Console.WriteLine($"{extension.Name}\t - {extension.Description}");
                     }
                 }
                 else
                 {
-                    foreach (string commandName in args)
+                    foreach (string extName in args)
                     {
-                        Console.WriteLine($"-- {commandName} --");
+                        Console.WriteLine($"-- {extName} --");
 
                         // Execute the command with the name passed as an argument.
-                        IExtension command = commands.FirstOrDefault(c => c.Name == commandName);
-                        if (command == null)
+                        IExtension extension = extensions.FirstOrDefault(c => c.Name == extName);
+                        if (extension == null)
                         {
-                            Console.WriteLine("No such command is known.");
+                            Console.WriteLine("Sorry Can't Load This File.");
                             return;
                         }
 
-                        int i = command.Execute();
+                        bool i = extension.Init();
 
                         Console.WriteLine();
                     }
@@ -93,20 +96,20 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
                                 Path.GetDirectoryName(typeof(Program).Assembly.Location)))))));
 
             string pluginLocation = Path.GetFullPath(Path.Combine(root, relativePath.Replace('\\', Path.DirectorySeparatorChar)));
-            Console.WriteLine($"Loading commands from: {pluginLocation}");
+            Console.WriteLine($"Loading Extensions from: {pluginLocation}");
             PluginContext loadContext = new PluginContext(pluginLocation);
             return loadContext.LoadFromAssemblyName(new AssemblyName(Path.GetFileNameWithoutExtension(pluginLocation)));
         }
 
-        private IEnumerable<IExtension> CreateCommands(Assembly assembly)
+        private IEnumerable<ExtensionBase_GUI> CreateCommands(Assembly assembly)
         {
             int count = 0;
 
             foreach (Type type in assembly.GetTypes())
             {
-                if (typeof(IExtension).IsAssignableFrom(type))
+                if (typeof(ExtensionBase_GUI).IsAssignableFrom(type))
                 {
-                    IExtension result = Activator.CreateInstance(type) as IExtension;
+                    ExtensionBase_GUI result = Activator.CreateInstance(type) as ExtensionBase_GUI;
                     if (result != null)
                     {
                         count++;
@@ -119,7 +122,7 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
             {
                 string availableTypes = string.Join(",", assembly.GetTypes().Select(t => t.FullName));
                 throw new ApplicationException(
-                    $"Can't find any type which implements ICommand in {assembly} from {assembly.Location}.\n" +
+                    $"Can't find any type which implements IExtension in {assembly} from {assembly.Location}.\n" +
                     $"Available types: {availableTypes}");
             }
         }
