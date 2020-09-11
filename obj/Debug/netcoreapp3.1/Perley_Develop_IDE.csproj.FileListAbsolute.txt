@@ -12,8 +12,10 @@
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/GtkSharp.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/PangoSharp.dll
+/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/PerleyDev_Plugin_lib.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/Perley_Develop_Core_lib.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/Perley_Develop_Core_lib.pdb
+/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/PerleyDev_Plugin_lib.pdb
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.csprojAssemblyReference.cache
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.AssemblyInfoInputs.cache
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.AssemblyInfo.cs
@@ -22,5 +24,3 @@
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.pdb
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/obj/Debug/netcoreapp3.1/Perley_Develop_IDE.genruntimeconfig.cache
-/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/PerleyDev_Plugin_lib.dll
-/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/PerleyDev_Plugin_lib.pdb

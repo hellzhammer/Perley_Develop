@@ -1,6 +1,7 @@
 using System;
 using Gtk;
 using Perley_Develop_Core_lib.FileSystem;
+using Perley_Develop_IDE.Interface_Builders.FileTreeInterface;
 public class MainViewBuilder
 {
     public MenuBar BuildMenu(Window win)
@@ -87,8 +88,7 @@ public class MainViewBuilder
         te.HeightRequest = 500;
         n.InsertPage(te, new Label("test"), 0);
 
-        var tree = BuildFileTree();
-        tree.WidthRequest = 100;
+        var tree = FileTreeBuilder.BuildFileTree();
         HBox _hbox = new HBox();
         _hbox.PackStart(tree, false, true, 10);
         _hbox.Add(n);
@@ -117,17 +117,5 @@ public class MainViewBuilder
 
         dirchooser.Dispose();
         return rtnval;
-    }
-    private TreeView BuildFileTree()
-    {
-        Gtk.TreeView tree = new Gtk.TreeView();
-        Gtk.TreeViewColumn artistColumn = new Gtk.TreeViewColumn();
-        artistColumn.Title = "File Tree";
-        tree.AppendColumn(artistColumn);
-        Gtk.ListStore musicListStore = new Gtk.ListStore(typeof(string));
-        tree.Model = musicListStore;
-        musicListStore.AppendValues("Garbage");
-
-        return tree;
     }
 }

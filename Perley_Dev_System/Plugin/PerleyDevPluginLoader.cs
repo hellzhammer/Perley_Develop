@@ -37,7 +37,7 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
                     Environment.CurrentDirectory + "/Plugins/PerleyDev_T/PerleyDev_T.dll"
                 };
 
-                IEnumerable<ExtensionBase_GUI> extensions = pluginPaths.SelectMany(pluginPath =>
+                IEnumerable<ExtensionBase> extensions = pluginPaths.SelectMany(pluginPath =>
                 {
                     Assembly pluginAssembly = LoadPlugin(pluginPath);
                     return CreateCommands(pluginAssembly);
@@ -47,7 +47,7 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
                 {
                     Console.WriteLine("Extensions: ");
                     // Output the loaded commands.
-                    foreach (ExtensionBase_GUI extension in extensions)
+                    foreach (ExtensionBase extension in extensions)
                     {
                         if (extension == null)
                         {
@@ -66,7 +66,7 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
                         Console.WriteLine($"-- {extName} --");
 
                         // Execute the command with the name passed as an argument.
-                        IExtension extension = extensions.FirstOrDefault(c => c.Name == extName);
+                        ExtensionBase extension = extensions.FirstOrDefault(c => c.Name == extName);
                         if (extension == null)
                         {
                             Console.WriteLine("Sorry Can't Load This File.");
@@ -82,6 +82,22 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+        }
+
+        public IEnumerable<ExtensionBase> LoadSinglePlugin(string extPath){
+
+            Assembly extAssembly = LoadPlugin(extPath);  
+            foreach (Type type in extAssembly.GetTypes())
+            {
+                if (typeof(ExtensionBase).IsAssignableFrom(type))
+                {
+                    ExtensionBase result = Activator.CreateInstance(type) as ExtensionBase;
+                    if (result != null)
+                    {
+                        yield return result;
+                    }
+                }
             }
         }
 
@@ -101,15 +117,15 @@ namespace Perley_Develop_IDE.Perley_Dev_System.Plugin
             return loadContext.LoadFromAssemblyName(new AssemblyName(Path.GetFileNameWithoutExtension(pluginLocation)));
         }
 
-        private IEnumerable<ExtensionBase_GUI> CreateCommands(Assembly assembly)
+        private IEnumerable<ExtensionBase> CreateCommands(Assembly assembly)
         {
             int count = 0;
 
             foreach (Type type in assembly.GetTypes())
             {
-                if (typeof(ExtensionBase_GUI).IsAssignableFrom(type))
+                if (typeof(ExtensionBase).IsAssignableFrom(type))
                 {
-                    ExtensionBase_GUI result = Activator.CreateInstance(type) as ExtensionBase_GUI;
+                    ExtensionBase result = Activator.CreateInstance(type) as ExtensionBase;
                     if (result != null)
                     {
                         count++;

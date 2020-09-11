@@ -38,12 +38,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "GtkSharp": {
-              "target": "Package",
-              "version": "[3.22.25.128, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

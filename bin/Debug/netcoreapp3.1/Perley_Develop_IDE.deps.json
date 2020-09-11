@@ -105,9 +105,6 @@
         }
       },
       "PerleyDev_Plugin_lib/1.0.0": {
-        "dependencies": {
-          "GtkSharp": "3.22.25.128"
-        },
         "runtime": {
           "PerleyDev_Plugin_lib.dll": {}
         }

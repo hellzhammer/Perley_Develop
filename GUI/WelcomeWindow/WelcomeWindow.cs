@@ -3,10 +3,16 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System;
+using System.Linq;
+
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
+
 using Perley_Develop_Core_lib.FileSystem;
 using Perley_Develop_Core_lib.App_Components;
+using PerleyDev_Plugin_lib.Interfaces;
+using PerleyDev_Plugin_lib.Models;
+using Perley_Develop_IDE.Perley_Dev_System.Plugin;
 namespace Perley_Develop_IDE.GUI
 {
     public class WelcomeWindow : Window, Perley_Develop_IDE.GUI.IWindow
@@ -20,6 +26,12 @@ namespace Perley_Develop_IDE.GUI
             DeleteEvent += Window_DeleteEvent;
             this.Resizable = false;
             BuildApp();
+        }
+        void examplePlugin(){
+            PerleyDevPluginLoader loader = new PerleyDevPluginLoader();
+            var plugin = loader.LoadSinglePlugin(Environment.CurrentDirectory + "/Plugins/PerleyDev_T/PerleyDev_T.dll").ToList();
+            plugin[0].Init();
+            Console.WriteLine($"{plugin[0].Name}\t - {plugin[0].Description}");
         }
 
         public void BuildApp()
@@ -49,16 +61,6 @@ namespace Perley_Develop_IDE.GUI
                         win.Show();
                         this.Dispose(); 
                     }
-                    /*
-                    if (dir != null)
-                    {
-                        string[] dirs = DirectoryManager.GetDirectorySubdirectories(dir);
-                        foreach (var folder in dirs)
-                        {
-                            Console.WriteLine(folder);
-                        }
-                    }
-                    */
                 };
 
                 this.box.Add(newButton);

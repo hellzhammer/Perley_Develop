@@ -11,20 +11,13 @@ namespace Perley_Develop_IDE
         [STAThread]
         public static void Main(string[] args)
         {
-            /*
-            //testing out loading plugins
-            PerleyDevPluginLoader loader = new PerleyDevPluginLoader();
-            loader.LoadPlugins(args);
-            */
             IDE_Startup();
-            Application.Init();
 
+            Application.Init();
             var app = new Application("org.Perley_Develop_IDE.Perley_Develop_IDE", GLib.ApplicationFlags.None);
             app.Register(GLib.Cancellable.Current);
-
             var win = new WelcomeWindow();
             app.AddWindow(win);
-
             win.Show();
             Application.Run();
         }

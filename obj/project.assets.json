@@ -104,9 +104,6 @@
       "PerleyDev_Plugin_lib/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "GtkSharp": "3.22.25.128"
-        },
         "compile": {
           "bin/placeholder/PerleyDev_Plugin_lib.dll": {}
         },
