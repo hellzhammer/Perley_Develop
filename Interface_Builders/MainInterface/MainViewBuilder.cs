@@ -88,7 +88,7 @@ public class MainViewBuilder
         te.HeightRequest = 500;
         n.InsertPage(te, new Label("test"), 0);
 
-        var tree = FileTreeBuilder.BuildFileTree();
+        var tree = FileTreeBuilder.Builder();
         HBox _hbox = new HBox();
         _hbox.PackStart(tree, false, true, 10);
         _hbox.Add(n);

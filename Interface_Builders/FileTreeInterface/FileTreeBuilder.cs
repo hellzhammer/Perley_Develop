@@ -1,76 +1,81 @@
 using System.IO;
 using System.Collections.Generic;
-using Gtk;
 using System;
 
+using Gtk;
+
+using Perley_Develop_Core_lib.PerleyDevelop_Core.FileSystem.Models;
+using Perley_Develop_Core_lib.PerleyDevelop_Core.FileSystem.Interfaces;
 using Perley_Develop_Core_lib.App_Components;
+
 namespace Perley_Develop_IDE.Interface_Builders.FileTreeInterface
 {
     public class FileTreeBuilder
     {
-        public static Dictionary<string, string[]> fileTreeDict = new Dictionary<string, string[]>();
-        public static List<string> singleFiles = new List<string>();
+        public static TreeView Builder(){
+            // here we build the base gui
+            TreeView tree = InitGUI();
 
-        /*
-        Need to implement some new logic in here.
-        this breaks the app currently but i have a new implementation 
-        i have added in an external library.
+            //start by building just the top layer again with the 
+            //new logic addition.
+            TreeStore fileListStore = buildTopLayer();
+            
+            // now i need to figure out how to go through every entry 
+            // and display what is in each and every folder
 
-        after implementing that i need to rework the below tree builder to iterate through 
-        everyhting and display the content as expected.
-        */
-
-        public static TreeView BuildFileTree()
-        {
-            // Create our TreeView
-            Gtk.TreeView tree = new Gtk.TreeView();
-            tree.WidthRequest = 150;
-            // Create a column for the artist name
-            Gtk.TreeViewColumn artistColumn = new Gtk.TreeViewColumn();
-            artistColumn.Title = "Project";
-
-            // Create the text cell that will display the artist name
-            Gtk.CellRendererText artistNameCell = new Gtk.CellRendererText();
-            // Add the cell to the column
-            artistColumn.PackStart(artistNameCell, true);
-
-            // Add the columns to the TreeView
-            tree.AppendColumn(artistColumn);
-            //tree.AppendColumn (songColumn);
-
-            // Tell the Cell Renderers which items in the model to display
-            artistColumn.AddAttribute(artistNameCell, "text", 0);
-            Gtk.TreeStore musicListStore = new Gtk.TreeStore(typeof(string));
-            Gtk.TreeIter iter = new TreeIter();
-            foreach (var entry in fileTreeDict)
-            {
-                iter = musicListStore.AppendValues(Path.GetDirectoryName(entry.Key));
-                foreach (var e in entry.Value)
-                {
-                    musicListStore.AppendValues(iter, Path.GetFileName(e));
-                }
-            }
-
-            foreach (var item in singleFiles)
-            {
-                musicListStore.AppendValues(Path.GetFileName(item));
-            }
-
-            // Assign the model to the TreeView
-            tree.Model = musicListStore;
+            //complete tree and return..
+            tree.Model = fileListStore;
 
             tree.RowActivated += (sender, args) =>
             {
                 Console.WriteLine("Selection made: ");
                 Gtk.TreeIter iter;
-                musicListStore.GetIter(out iter, args.Path);
+                fileListStore.GetIter(out iter, args.Path);
 
-                var song = musicListStore.GetValue(iter, 0);
-                Console.WriteLine(song.ToString());
+                var _file = fileListStore.GetValue(iter, 0);
+                Console.WriteLine(_file.ToString());
             };
 
-            // Show the window and everything on it
+            tree.ShowAll();
             return tree;
+        }
+
+        private static TreeView InitGUI(){
+            TreeView tree = new TreeView();
+            tree.WidthRequest = 150;
+            TreeViewColumn projectColumn = new TreeViewColumn();
+            projectColumn.Title = "Project";
+            CellRendererText projectNameCell = new CellRendererText();
+            projectColumn.PackStart(projectNameCell, true);
+            tree.AppendColumn(projectColumn);
+            projectColumn.AddAttribute(projectNameCell, "text", 0);
+            return tree;
+        }
+
+        private static TreeStore buildTopLayer(){
+            TreeStore fileListStore = new TreeStore(typeof(string));
+            TreeIter iter = new TreeIter();
+            foreach (IFileSystemItem item in Session.CurrentSession.ProjectDirectory.subPaths)
+            {
+                if(item == item as PerleyDev_Directory){
+                    var Item = item as PerleyDev_Directory;
+                    iter = fileListStore.AppendValues(Path.GetDirectoryName(item.Name));
+                    foreach (var e in Item.subPaths)
+                    {
+                        fileListStore.AppendValues(iter, e.Name);
+                    }
+                }
+            }
+
+            foreach (IFileSystemItem item in Session.CurrentSession.ProjectDirectory.subPaths)
+            {
+                if(item == item as PerleyDev_File){
+                    var Item = item as PerleyDev_File;
+                    fileListStore.AppendValues(Item.Name);
+                }
+            }
+
+            return fileListStore;
         }
     }
 }
