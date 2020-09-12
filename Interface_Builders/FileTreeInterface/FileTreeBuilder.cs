@@ -10,35 +10,18 @@ namespace Perley_Develop_IDE.Interface_Builders.FileTreeInterface
     {
         public static Dictionary<string, string[]> fileTreeDict = new Dictionary<string, string[]>();
         public static List<string> singleFiles = new List<string>();
-        static void GetFiles()
-        {
-            Dictionary<string, string[]> files = new Dictionary<string, string[]>();
-            string[] dirs = Directory.GetDirectories(Session.CurrentSession.projectPath);
 
-            foreach (string dir in dirs)
-            {
-                if (Directory.Exists(dir))
-                {
-                    List<string> f = new List<string>();
-                    foreach (string file in Directory.GetFiles(dir))
-                    {
-                        f.Add(file);
-                    }
-                    files.Add(dir, f.ToArray());
-                }
-            }
+        /*
+        Need to implement some new logic in here.
+        this breaks the app currently but i have a new implementation 
+        i have added in an external library.
 
-            foreach (var item in Directory.GetFiles(Session.CurrentSession.projectPath))
-            {
-                singleFiles.Add(item);
-            }
-
-            fileTreeDict = files;
-        }
+        after implementing that i need to rework the below tree builder to iterate through 
+        everyhting and display the content as expected.
+        */
 
         public static TreeView BuildFileTree()
         {
-            GetFiles();
             // Create our TreeView
             Gtk.TreeView tree = new Gtk.TreeView();
             tree.WidthRequest = 150;

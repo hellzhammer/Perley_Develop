@@ -27,7 +27,7 @@ namespace Perley_Develop_IDE.GUI
             
             DeleteEvent += Window_DeleteEvent;
             BuildApp();
-            this.Title = this.Title + " -- Directory: " + Session.CurrentSession.projectPath;
+            this.Title = this.Title + " -- Directory: " + Session.CurrentSession.ProjectDirectory.Path;
         }
         public void BuildApp(){
             Gtk.Application.Invoke (delegate {
