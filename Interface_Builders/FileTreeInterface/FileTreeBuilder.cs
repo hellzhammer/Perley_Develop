@@ -59,7 +59,7 @@ namespace Perley_Develop_IDE.Interface_Builders.FileTreeInterface
             {
                 if(item == item as PerleyDev_Directory){
                     var Item = item as PerleyDev_Directory;
-                    iter = fileListStore.AppendValues(Path.GetDirectoryName(item.Name));
+                    iter = fileListStore.AppendValues(item.Name);
                     foreach (var e in Item.subPaths)
                     {
                         fileListStore.AppendValues(iter, e.Name);
