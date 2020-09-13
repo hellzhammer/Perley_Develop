@@ -23,6 +23,7 @@ I will be implementing debugger functionality via plugins as well, so users can 
 
 # Other Stuff
 There are some other features I want to implement such as:
+
     --Git Support (Later)
     --Docker Support (Later)
     --Syntax Highlighting (Duh)
@@ -32,5 +33,6 @@ There are some other features I want to implement such as:
 # Notes: 
 The code is messy, but that will change. There are going to be several updates to this repo over time. Some code will get better, some will get worse. This is not about best practices. 
 
- -- There are libraries the project relies on that I will not be releasing source code for. 
- -- Plugin development details and apis will be available as soon as I have the time. 
+    -- There are libraries the project relies on that I will not be releasing source code for. 
+    
+    -- Plugin development details and apis will be available as soon as I have the time. 
