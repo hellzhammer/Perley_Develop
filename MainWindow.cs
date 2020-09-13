@@ -38,7 +38,7 @@ namespace Perley_Develop_IDE.GUI
               MenuBar mb = viewBuild.BuildMenu(this);
               box.Add(mb);
               
-              HBox _hbox = viewBuild.BuildTextEditor();
+              HPaned _hbox = viewBuild.BuildTextEditor();
               box.Add(_hbox);
               
               HBox hbox = viewBuild.BuildFooter();

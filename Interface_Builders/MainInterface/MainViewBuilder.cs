@@ -1,7 +1,7 @@
 using System;
 using Gtk;
 using Perley_Develop_Core_lib.FileSystem;
-using Perley_Develop_IDE.Interface_Builders.FileTreeInterface;
+using Perley_Develop_IDE.GUI;
 public class MainViewBuilder
 {
     public MenuBar BuildMenu(Window win)
@@ -70,7 +70,7 @@ public class MainViewBuilder
         hbox.PackStart(new Label("Some output would go here."), false, false, 10);
         return hbox;
     }
-    public HBox BuildTextEditor()
+    public HPaned BuildTextEditor()
     {
         //todo: text edidtor is about to be replaced.
         Notebook n = new Notebook();
@@ -88,12 +88,14 @@ public class MainViewBuilder
         te.HeightRequest = 500;
         n.InsertPage(te, new Label("test"), 0);
 
-        var tree = FileTreeBuilder.Builder();
-        HBox _hbox = new HBox();
-        _hbox.PackStart(tree, false, true, 10);
-        _hbox.Add(n);
+        var tree = new FileTreeWidget("Hello Project", 75, 120);
+        HPaned paned = new HPaned();
+        ScrolledWindow scroll = new ScrolledWindow();
+        scroll.Add(tree);
 
-        return _hbox;
+        paned.Pack1(scroll, false, false);
+        paned.Add2(n);
+        return paned;
     }
     public string OpenDirectory(Window win)
     {
