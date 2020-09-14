@@ -46,6 +46,7 @@ namespace Perley_Develop_IDE.GUI
         private void Build(TreeStore fileListStore)
         {
             this.Model = fileListStore;
+            this.ActivateOnSingleClick = true;
             this.RowExpanded += (sender, args) =>
             {
                 Console.WriteLine("Expanding");
@@ -69,23 +70,8 @@ namespace Perley_Develop_IDE.GUI
                         foreach (var folder in new_dirs)
                         {
                             PerleyDev_Directory pdir = new PerleyDev_Directory(folder);
-                            
-                            string[] new_dirs2 = DirectoryManager.GetDirectorySubdirectories(folder);
-                            string[] new_files2 = DirectoryManager.GetDirectoryFiles(folder);
                             var iter2 = fileListStore.AppendValues(iter, folder.Substring(folder.LastIndexOf("/")), pdir);
-                            if (!this.Model.IterHasChild(iter2))
-                            {
-                                foreach (var folder2 in new_dirs2)
-                                {
-                                    PerleyDev_Directory pdir2 = new PerleyDev_Directory(folder2);
-                                    fileListStore.AppendValues(iter2, folder2.Substring(folder2.LastIndexOf("/")), pdir);
-                                }
-                                foreach (var file in new_files2)
-                                {
-                                    PerleyDev_File pfile = new PerleyDev_File(file);
-                                    fileListStore.AppendValues(iter2, new FileInfo(file).Name, pfile);
-                                }
-                            }
+                            
                         }
                         foreach (var file in new_files)
                         {
@@ -119,23 +105,6 @@ namespace Perley_Develop_IDE.GUI
                         else
                         {
                             var iter2 = fileListStore.AppendValues(iter, e.Path.Substring(e.Path.LastIndexOf("/")), Item);
-                            // here we want to do the same as above but i need to fix something first
-                            string[] dirs = DirectoryManager.GetDirectorySubdirectories(Item.Path);
-                            string[] files = DirectoryManager.GetDirectoryFiles(Item.Path);
-
-                            if (!fileListStore.IterHasChild(iter2))
-                            {
-                                foreach (var folder2 in dirs)
-                                {
-                                    PerleyDev_Directory pdir2 = new PerleyDev_Directory(folder2);
-                                    fileListStore.AppendValues(iter2, folder2.Substring(folder2.LastIndexOf("/")), pdir2);
-                                }
-                                foreach (var file in files)
-                                {
-                                    PerleyDev_File pfile = new PerleyDev_File(file);
-                                    fileListStore.AppendValues(iter2, new FileInfo(file).Name, pfile);
-                                }
-                            }
                         }
                     }
                 }
