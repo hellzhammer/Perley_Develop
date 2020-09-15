@@ -3,7 +3,6 @@ using System;
 using Gtk;
 using System.IO;
 using Perley_Develop_IDE.GUI;
-using Perley_Develop_IDE.Perley_Dev_System.Plugin;
 namespace Perley_Develop_IDE
 {
     class Program
@@ -29,6 +28,16 @@ namespace Perley_Develop_IDE
             Console.WriteLine(s);
             if(!Directory.Exists(s)){
                 Directory.CreateDirectory(s+"/PerleyDevProjects");
+            }
+            else{
+                //todo: get paths to projects.
+            }
+            var ss = Environment.CurrentDirectory + "/Plugins";
+            Console.WriteLine(ss);
+            if(!Directory.Exists(ss)){
+                Directory.CreateDirectory(s+"/Plugins");
+                Directory.CreateDirectory(s+"/Plugins/CoreGui");
+                Directory.CreateDirectory(s+"/Plugins/Core");
             }
             else{
                 //todo: get paths to projects.
