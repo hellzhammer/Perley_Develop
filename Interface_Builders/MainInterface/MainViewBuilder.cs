@@ -93,7 +93,10 @@ public class MainViewBuilder
         scroll.Add(tree);
 
         paned.Pack1(scroll, false, false);
-        paned.Add2(n);
+        ScrolledWindow scrollw = new ScrolledWindow();
+        scrollw.HeightRequest = 550;
+        scrollw.Add(n);
+        paned.Add2(scrollw);
         return paned;
     }
     public string OpenDirectory(Window win)

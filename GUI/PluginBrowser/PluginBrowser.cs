@@ -23,14 +23,14 @@ namespace Perley_Develop_IDE.GUI.PluginBrowser
             this.box.Add(tree);
 
             Gtk.TreeViewColumn artistColumn = new Gtk.TreeViewColumn();
-            artistColumn.Title = "Artist";
+            artistColumn.Title = "Plugin";
 
             Gtk.CellRendererText artistNameCell = new Gtk.CellRendererText();
 
             artistColumn.PackStart(artistNameCell, true);
 
             Gtk.TreeViewColumn songColumn = new Gtk.TreeViewColumn();
-            songColumn.Title = "Song Title";
+            songColumn.Title = "Active";
 
             Gtk.CellRendererToggle songTitleCell = new Gtk.CellRendererToggle();
             songColumn.PackStart(songTitleCell, false);
