@@ -101,6 +101,15 @@
           "lib/netstandard2.0/PangoSharp.dll": {}
         }
       },
+      "System.CodeDom/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.CodeDom.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.CodeDom.dll": {}
+        }
+      },
       "PerleyDev_Plugin_lib/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -115,7 +124,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Newtonsoft.Json": "12.0.3"
+          "Newtonsoft.Json": "12.0.3",
+          "PerleyDev_Plugin_lib": "1.0.0",
+          "System.CodeDom": "4.7.0"
         },
         "compile": {
           "bin/placeholder/Perley_Develop_Core_lib.dll": {}
@@ -243,6 +254,29 @@
         "pangosharp.nuspec"
       ]
     },
+    "System.CodeDom/4.7.0": {
+      "sha512": "Hs9pw/kmvH3lXaZ1LFKj3pLQsiGfj2xo3sxSzwiLlRL6UcMZUTeCfoJ9Udalvn3yq5dLlPEZzYegrTQ1/LhPOQ==",
+      "type": "package",
+      "path": "system.codedom/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.CodeDom.dll",
+        "lib/net461/System.CodeDom.xml",
+        "lib/netstandard2.0/System.CodeDom.dll",
+        "lib/netstandard2.0/System.CodeDom.xml",
+        "ref/net461/System.CodeDom.dll",
+        "ref/net461/System.CodeDom.xml",
+        "ref/netstandard2.0/System.CodeDom.dll",
+        "ref/netstandard2.0/System.CodeDom.xml",
+        "system.codedom.4.7.0.nupkg.sha512",
+        "system.codedom.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "PerleyDev_Plugin_lib/1.0.0": {
       "type": "project",
       "path": "../PerleyDev_Plugin_lib/PerleyDev_Plugin_lib.csproj",
@@ -258,7 +292,8 @@
     ".NETCoreApp,Version=v3.1": [
       "GtkSharp >= 3.22.25.*",
       "PerleyDev_Plugin_lib >= 1.0.0",
-      "Perley_Develop_Core_lib >= 1.0.0"
+      "Perley_Develop_Core_lib >= 1.0.0",
+      "System.CodeDom >= 4.7.0"
     ]
   },
   "packageFolders": {
@@ -310,6 +345,10 @@
           "GtkSharp": {
             "target": "Package",
             "version": "[3.22.25.*, )"
+          },
+          "System.CodeDom": {
+            "target": "Package",
+            "version": "[4.7.0, )"
           }
         },
         "imports": [

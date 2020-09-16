@@ -80,7 +80,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/PerleyDev_Plugin_lib/PerleyDev_Plugin_lib.csproj": {
+                "projectPath": "/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/PerleyDev_Plugin_lib/PerleyDev_Plugin_lib.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -95,6 +99,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "System.CodeDom": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           },
           "imports": [
@@ -161,6 +169,10 @@
             "GtkSharp": {
               "target": "Package",
               "version": "[3.22.25.*, )"
+            },
+            "System.CodeDom": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           },
           "imports": [

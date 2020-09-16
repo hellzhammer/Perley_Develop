@@ -18,8 +18,6 @@ namespace Perley_Develop_IDE.GUI
         private int width = 800;
         [UI] private Box box = null;
 
-        Dictionary<string, TextTag> Tags = new Dictionary<string, TextTag>();
-
         public MainWindow() : this(new Builder("MainWindow.glade")) { }
 
         private MainWindow(Builder builder) : base(builder.GetObject("MainWindow").Handle)

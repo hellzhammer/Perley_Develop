@@ -10,7 +10,8 @@
         "dependencies": {
           "GtkSharp": "3.22.25.128",
           "PerleyDev_Plugin_lib": "1.0.0",
-          "Perley_Develop_Core_lib": "1.0.0"
+          "Perley_Develop_Core_lib": "1.0.0",
+          "System.CodeDom": "4.7.0"
         },
         "runtime": {
           "Perley_Develop_IDE.dll": {}
@@ -104,6 +105,14 @@
           }
         }
       },
+      "System.CodeDom/4.7.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.CodeDom.dll": {
+            "assemblyVersion": "4.0.3.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
       "PerleyDev_Plugin_lib/1.0.0": {
         "runtime": {
           "PerleyDev_Plugin_lib.dll": {}
@@ -111,7 +120,9 @@
       },
       "Perley_Develop_Core_lib/1.0.0": {
         "dependencies": {
-          "Newtonsoft.Json": "12.0.3"
+          "Newtonsoft.Json": "12.0.3",
+          "PerleyDev_Plugin_lib": "1.0.0",
+          "System.CodeDom": "4.7.0"
         },
         "runtime": {
           "Perley_Develop_Core_lib.dll": {}
@@ -180,6 +191,13 @@
       "sha512": "sha512-j3dm93MzUFJhCp0ecaxzDc+JZ8OAIwGeERp8GKVCNLxbdxDi68VYFI5iSZPNca091cO5Zo5IT5eeaWoyIwXR9g==",
       "path": "pangosharp/3.22.25.128",
       "hashPath": "pangosharp.3.22.25.128.nupkg.sha512"
+    },
+    "System.CodeDom/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Hs9pw/kmvH3lXaZ1LFKj3pLQsiGfj2xo3sxSzwiLlRL6UcMZUTeCfoJ9Udalvn3yq5dLlPEZzYegrTQ1/LhPOQ==",
+      "path": "system.codedom/4.7.0",
+      "hashPath": "system.codedom.4.7.0.nupkg.sha512"
     },
     "PerleyDev_Plugin_lib/1.0.0": {
       "type": "project",

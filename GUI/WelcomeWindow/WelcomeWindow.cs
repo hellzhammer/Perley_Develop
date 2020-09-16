@@ -12,7 +12,7 @@ using Perley_Develop_Core_lib.FileSystem;
 using Perley_Develop_Core_lib.App_Components;
 using PerleyDev_Plugin_lib.Interfaces;
 using PerleyDev_Plugin_lib.Models;
-using Perley_Develop_IDE.Perley_Dev_System.Plugin;
+using Perley_Develop_Core_lib.Plugin;
 namespace Perley_Develop_IDE.GUI
 {
     public class WelcomeWindow : Window, Perley_Develop_IDE.GUI.IWindow
@@ -33,7 +33,6 @@ namespace Perley_Develop_IDE.GUI
             plugin[0].Init();
             Console.WriteLine($"{plugin[0].Name}\t - {plugin[0].Description}");
         }
-
         public void BuildApp()
         {
             Gtk.Application.Invoke(delegate

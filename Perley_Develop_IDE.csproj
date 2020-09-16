@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="GtkSharp" Version="3.22.25.*" />
+    <PackageReference Include="System.CodeDom" Version="4.7.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../Perley_Develop_Core_lib/Perley_Develop_Core_lib.csproj" />

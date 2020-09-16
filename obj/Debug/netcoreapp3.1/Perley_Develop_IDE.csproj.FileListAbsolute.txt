@@ -12,6 +12,7 @@
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/GtkSharp.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/PangoSharp.dll
+/home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/System.CodeDom.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/PerleyDev_Plugin_lib.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/Perley_Develop_Core_lib.dll
 /home/hellzhammer/Desktop/PerleyDevelop/Perley_Develop/Perley_Develop_IDE/bin/Debug/netcoreapp3.1/Perley_Develop_Core_lib.pdb
