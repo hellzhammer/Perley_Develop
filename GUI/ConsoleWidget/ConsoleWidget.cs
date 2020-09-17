@@ -21,7 +21,7 @@ namespace Perley_Develop_IDE.GUI
             builder.Autoconnect(this);
 
             this.Editable = false;
-            this.HeightRequest = 60;
+            this.HeightRequest = 150;
         }
 
         public void ClearConsole(){

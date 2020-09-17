@@ -33,28 +33,31 @@ namespace Perley_Develop_IDE.GUI
         {
             Gtk.Application.Invoke(delegate
             {
+                //setup
                 MainViewBuilder viewBuild = new MainViewBuilder();
                 setWindow();
                 box.Spacing = 5;
 
+                //menu bar
                 MenuBar mb = viewBuild.BuildMenu(this);
                 box.Add(mb);
 
-                HPaned _hbox = viewBuild.BuildTextEditor();
-                box.Add(_hbox);
-
+                //footer
                 HBox hbox = viewBuild.BuildFooter();
-
-                box.PackEnd(hbox, false, true, 10);
-
+                //console
                 VBox vv = new VBox();
                 vv.PackStart(new Label("Output"), false, true, 5);
                 ScrolledWindow scrollw = new ScrolledWindow();
                 scrollw.Add(SystemComponents.IDE_Console);
                 vv.Add(scrollw);
+                //text editor
+                HPaned _hbox = viewBuild.BuildTextEditor();
+                VPaned vvv = new VPaned();
+                vvv.Pack1(_hbox, false, true);
+                vvv.Pack2(vv, false, true);
 
-                box.PackEnd(vv, false, true, 1);
-
+                box.PackEnd(hbox, false, true, 10);
+                box.PackEnd(vvv, false, true, 10);
                 this.ShowAll();
             });
         }

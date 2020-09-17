@@ -91,12 +91,13 @@ public class MainViewBuilder
         HPaned paned = new HPaned();
         ScrolledWindow scroll = new ScrolledWindow();
         scroll.Add(tree);
-
         paned.Pack1(scroll, false, false);
+
         ScrolledWindow scrollw = new ScrolledWindow();
         scrollw.HeightRequest = 550;
         scrollw.Add(n);
-        paned.Add2(scrollw);
+        
+        paned.Add2(scrollw); // text editor
         return paned;
     }
     public string OpenDirectory(Window win)
