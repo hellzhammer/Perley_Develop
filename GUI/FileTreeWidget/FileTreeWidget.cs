@@ -27,7 +27,6 @@ namespace Perley_Develop_IDE.GUI
             builder.Autoconnect(this);
             InitGUI();
             TreeStore tree = buildTopLayer();
-            Build(tree);
         }
 
         private void InitGUI()
@@ -43,70 +42,42 @@ namespace Perley_Develop_IDE.GUI
             projectColumn.AddAttribute(projectNameCell, "text", 0);
         }
 
-        private void Build(TreeStore fileListStore)
+        private void RecursiveBuilder(string path, TreeIter iter, TreeStore fileListStore)
         {
-            this.Model = fileListStore;
-            this.ActivateOnSingleClick = true;
-            this.RowExpanded += (sender, args) =>
+            if (Directory.Exists(path))
             {
-                Console.WriteLine("Expanding");
-            };
-            this.RowActivated += (sender, args) =>
-            {
-                Console.WriteLine("Selection made: ");
-                Gtk.TreeIter iter;
-                fileListStore.GetIter(out iter, args.Path);
-                var _file = fileListStore.GetValue(iter, 0);
-                IFileSystemItem selectedItem = fileListStore.GetValue(iter, 1) as IFileSystemItem;
-                Console.WriteLine(selectedItem.Path);
-
-                if (Directory.Exists(selectedItem.Path))
+                if (!this.Model.IterHasChild(iter))
                 {
-                    if (!this.Model.IterHasChild(iter))
-                    {
-                        string[] new_dirs = DirectoryManager.GetDirectorySubdirectories(selectedItem.Path);
-                        string[] new_files = DirectoryManager.GetDirectoryFiles(selectedItem.Path);
+                    string[] new_dirs = DirectoryManager.GetDirectorySubdirectories(path);
+                    string[] new_files = DirectoryManager.GetDirectoryFiles(path);
 
-                        foreach (var folder in new_dirs)
-                        {
-                            PerleyDev_Directory pdir = new PerleyDev_Directory(folder);
-                            var iter2 = fileListStore.AppendValues(iter, folder.Substring(folder.LastIndexOf("/")), pdir);
-                            
-                        }
-                        foreach (var file in new_files)
-                        {
-                            PerleyDev_File pfile = new PerleyDev_File(file);
-                            fileListStore.AppendValues(iter, new FileInfo(file).Name, pfile);
-                        }
+                    foreach (var folder in new_dirs)
+                    {
+                        PerleyDev_Directory pdir = new PerleyDev_Directory(folder);
+                        var iter2 = fileListStore.AppendValues(iter, folder.Substring(folder.LastIndexOf("/")), pdir);
+                        RecursiveBuilder(folder, iter2, fileListStore);
+                    }
+                    foreach (var file in new_files)
+                    {
+                        PerleyDev_File pfile = new PerleyDev_File(file);
+                        fileListStore.AppendValues(iter, new FileInfo(file).Name, pfile);
                     }
                 }
-            };
-
-            this.ShowAll();
+            }
         }
 
         private TreeStore buildTopLayer()
         {
             TreeStore fileListStore = new TreeStore(typeof(string), typeof(IFileSystemItem));
             TreeIter iter = new TreeIter();
+            this.Model = fileListStore;
             foreach (IFileSystemItem item in Session.CurrentSession.ProjectDirectory.subPaths)
             {
                 if (item == item as PerleyDev_Directory)
                 {
                     var Item = item as PerleyDev_Directory;
                     iter = fileListStore.AppendValues(item.Name.Substring(item.Name.LastIndexOf("/")), Item);
-                    foreach (var e in Item.subPaths)
-                    {
-                        if (e == e as PerleyDev_File)
-                        {
-                            var ee = e as PerleyDev_File;
-                            fileListStore.AppendValues(iter, e.Name, ee);
-                        }
-                        else
-                        {
-                            var iter2 = fileListStore.AppendValues(iter, e.Path.Substring(e.Path.LastIndexOf("/")), Item);
-                        }
-                    }
+                    RecursiveBuilder(Item.Path, iter, fileListStore);
                 }
             }
 
@@ -118,6 +89,9 @@ namespace Perley_Develop_IDE.GUI
                     fileListStore.AppendValues(Item.Name, Item);
                 }
             }
+
+            this.ActivateOnSingleClick = true;
+            this.Show();
 
             return fileListStore;
         }
