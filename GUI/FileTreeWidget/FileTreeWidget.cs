@@ -71,6 +71,7 @@ namespace Perley_Develop_IDE.GUI
             TreeStore fileListStore = new TreeStore(typeof(string), typeof(IFileSystemItem));
             TreeIter iter = new TreeIter();
             this.Model = fileListStore;
+
             foreach (IFileSystemItem item in Session.CurrentSession.ProjectDirectory.subPaths)
             {
                 if (item == item as PerleyDev_Directory)

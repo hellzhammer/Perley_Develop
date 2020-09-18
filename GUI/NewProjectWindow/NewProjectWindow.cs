@@ -108,10 +108,9 @@ namespace Perley_Develop_IDE.GUI {
             }
             string pathToUse = pathEntry.Text + projEntry.Text;
             Directory.CreateDirectory(pathToUse);
-            Session sesh = new Session(pathToUse);
             DotnetCommander dComm = new DotnetCommander();
-            dComm.CreateApp(appTypes[selectedAppType]);
-
+            dComm.CreateApp(appTypes[selectedAppType], pathToUse);
+            Session sesh = new Session(pathToUse);
             var win = new MainWindow();
             Application.AddWindow(win);
             win.Show();

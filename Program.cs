@@ -16,6 +16,8 @@ namespace Perley_Develop_IDE
             Application.Init();
             var app = new Application("org.Perley_Develop_IDE.Perley_Develop_IDE", GLib.ApplicationFlags.None);
             app.Register(GLib.Cancellable.Current);
+            var s = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            App_Path.projectPath = s + "/PerleyDevProjects";
             var win = new WelcomeWindow();
             app.AddWindow(win);
             win.Show();
