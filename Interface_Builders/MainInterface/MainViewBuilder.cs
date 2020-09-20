@@ -71,22 +71,6 @@ public class MainViewBuilder
     }
     public HPaned BuildTextEditor()
     {
-        //todo: text edidtor is about to be replaced.
-        Notebook n = new Notebook();
-
-        var te = new TextView();
-        var errorTag = new TextTag("error");
-        errorTag.Foreground = "blue";
-        errorTag.Weight = Pango.Weight.Bold;
-        te.Buffer.TagTable.Add(errorTag);
-        string text = "foo";
-
-        // Insert text with tag.
-        TextIter start = te.Buffer.EndIter;
-        te.Buffer.InsertWithTags(ref start, text, errorTag);
-        te.HeightRequest = 500;
-        n.InsertPage(te, new Label("test"), 0);
-
         var tree = new FileTreeWidget("Hello Project", 75, 120);
         HPaned paned = new HPaned();
         ScrolledWindow scroll = new ScrolledWindow();
@@ -95,7 +79,7 @@ public class MainViewBuilder
 
         ScrolledWindow scrollw = new ScrolledWindow();
         scrollw.HeightRequest = 550;
-        scrollw.Add(n);
+        scrollw.Add(new EditorHousing());
         
         paned.Add2(scrollw); // text editor
         return paned;

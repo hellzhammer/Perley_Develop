@@ -19,14 +19,9 @@ namespace Perley_Develop_IDE.GUI
             this.ViewID = Guid.NewGuid().ToString();
             this.Buffer.Changed += (sender, args)=>{
                 //if we start editing a view we want to set it as the active view. 
-                SystemComponents.ActiveView = this;
-
+                
                 //while typing we want to get when the spacebar is hit and then highlight text if needed. 
             };
-            if(SystemComponents.Open_Views == null){
-                SystemComponents.Open_Views = new System.Collections.Generic.List<TextEditorView>();
-            }
-            SystemComponents.Open_Views.Add(this);
         }
 
         public void LoadData(PerleyDev_File file){

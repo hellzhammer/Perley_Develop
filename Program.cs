@@ -14,7 +14,6 @@ namespace Perley_Develop_IDE
         public static void Main(string[] args)
         {
             IDE_Startup.IDEStartup();
-            Global.SystemComponents.Open_Views = new List<TextEditorView>();
             Application.Init();
             var app = new Application("org.Perley_Develop_IDE.Perley_Develop_IDE", GLib.ApplicationFlags.None);
             app.Register(GLib.Cancellable.Current);
